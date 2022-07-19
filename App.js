@@ -1,5 +1,5 @@
 import React from "react";
-import Navigations from "./Navigations";
+import Navigations from "./component/Navigations";
 
 const App = () => {
   return (
