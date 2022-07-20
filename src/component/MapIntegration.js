@@ -72,7 +72,7 @@ const MapIntegration = () => {
                     size={20}
                     style={{color: 'gray'}}
                 />
-                <Text onPress={()=> console.log("hiiii")}>address</Text>
+                <Text>address</Text>
               </View>
                
                 <View style={{display: 'flex', flexDirection : 'row', marginRight: 20, alignContent: 'center', justifyContent: 'center', backgroundColor: 'green', borderRadius: 50, paddingHorizontal: 10}}>

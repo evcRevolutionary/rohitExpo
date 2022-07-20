@@ -6,37 +6,36 @@ export default function Login({navigation}){
     const [PassWord, onChangePassword] = useState("");
 
     const onPressLearnMore = () => {
-        ToastAndroid.show("Loign Succesfull", ToastAndroid.SHORT);
+        ToastAndroid.show("Loign Succesfully", ToastAndroid.SHORT);
         navigation.navigate('Menu');
     }
     return (
-        <SafeAreaView >
+        <SafeAreaView style={{margin: 12}}>
+        <Text style={styles.label}>Email</Text>
         <TextInput
             style={styles.input}
             onChangeText={onChangeEmail}
             value={email}
-            placeholder="email"
+            placeholder="Enter email..."
             keyboardType="email-address"
         />
+        <Text style={styles.label}>Password</Text>
         <TextInput
             style={styles.input}
             onChangeText={onChangePassword}
             value={PassWord}
-            placeholder="password"
+            placeholder="Enter password..."
             secureTextEntry={true}
         />
-        <Text style={{ textAlign: 'center', color: 'white'}}>
-                By conntinuing, you agree to our 
-                <Text style={{ color: '#028A0f' }}> Term of Services </Text>
-                and <Text style={{ color: '#028A0f' }}> Privacy Policy </Text>
-                </Text>
         <View style={styles.button}>
             <Button
                 onPress={onPressLearnMore}
-                title="Learn More"
-                color="#841584"
+                title="Login"
+                color="black" 
                 />
         </View>
+        <Text style={styles.signupLabel}>forgot password</Text>
+        <Text style={styles.signupLabel} onPress={()=> navigation.navigate('Resgister')}>sign up</Text>
         </SafeAreaView>
     )
 }
@@ -45,15 +44,26 @@ export default function Login({navigation}){
 const styles = StyleSheet.create({
     input: {
       height: 40,
-      margin: 12,
+      marginBottom: 20,
       borderWidth: 1,
       padding: 10,
       backgroundColor: 'white',
-      borderRadius: 50,
+      borderColor: '#A9A9A9',
+      borderRadius: 4,
     },
     button: {
-        marginTop: 30,
-        paddingLeft: 20,
-        paddingRight: 20,
+        marginTop: 30,    
+    },
+    label: {
+        marginBottom: 10,
+        color: '#A9A9A9',
+    },
+    signupLabel:{
+        fontSize: 20,
+        textAlign: 'center',
+        color: '#A9A9A9',
+        marginTop: 20,
+        textTransform: 'uppercase',
+        fontWeight: '700',
     },
   });
