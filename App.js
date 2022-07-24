@@ -1,13 +1,6 @@
-import React from "react";
-import Navigations from "./src/component/Navigations";
+import React from 'react';
+import Routing from './src/component/Routing';
 
-const App = () => {
-  return (
-    <>
-    {/* <StatusBar  style='light'/> */}
-    <Navigations/>
-   </>
-  );
-};
+const App = () => <Routing/>;
 
 export default App;
