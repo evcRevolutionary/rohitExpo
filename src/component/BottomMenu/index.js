@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Map from '../Map';
@@ -7,6 +7,7 @@ import ScanScreen from '../ScanScreen';
 import PropTypes from 'prop-types';
 import ProfileData from '../ProfileData';
 import OrderData from '../OrderData';
+import Favorite from '../Favorite';
 
 function Feed() {
     return (
@@ -84,7 +85,7 @@ export default function BottomMenu({ navigation }) {
                     ),
                 }}
             >
-                {() => <Text>favorite</Text>}
+                {() => <Favorite/>}
             </Tab.Screen>
             <Tab.Screen
                 name="Profile"
