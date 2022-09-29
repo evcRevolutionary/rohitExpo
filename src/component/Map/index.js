@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Alert } from 'react-native';
+import { Alert, View } from 'react-native';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import QrCodeScanner from '../QrCodeScanner';
-import * as Location from 'expo-location';
+// import * as Location from 'expo-location';
 import MapInfo from '../MapInfo';
 import { 
     MapConatiner, 
@@ -40,19 +40,19 @@ export default function Map(){
             }
             let { coords } = await Location.getCurrentPositionAsync();
             coords && setLocation(coords);
-            // if (coords) {
-            //     const { latitude, longitude } = coords;
-            //     let response = await Location.reverseGeocodeAsync({
-            //         latitude,
-            //         longitude,
-            //     });
+            if (coords) {
+                const { latitude, longitude } = coords;
+                let response = await Location.reverseGeocodeAsync({
+                    latitude,
+                    longitude,
+                });
           
-            //     for (let item of response) {
-            //         let address = `${item.name}, ${item.street}, ${item.postalCode}, ${item.city}`;
-            //         console.log('ite,==', item);
-            //         console.log(address);
-            //     }
-            // }
+                for (let item of response) {
+                    let address = `${item.name}, ${item.street}, ${item.postalCode}, ${item.city}`;
+                    console.log('ite,==', item);
+                    console.log(address);
+                }
+            }
         };
         data();
     }, []);
@@ -60,6 +60,14 @@ export default function Map(){
     return (
         <>
             <MapConatiner>
+                <View style={{position: 'absolute', zIndex: 1, right: 0, top: '50%'}}>
+                    <MaterialCommunityIcons
+                        name="face-man-profile"
+                        size={30}
+                        style={{ color: 'black' }}
+                        // onPress={() => props.navigation.goBack()}
+                    />
+                </View>
                 <MapConatinerInfo>
                     <MapInfo {...{getResult, modalVisible, setModalVisible, setScanned, scanned}}/>
                 </MapConatinerInfo>

@@ -16,6 +16,7 @@ export default function ScanScreen() {
     }, []);
 
     function HandleBarCodeScanned(props) {
+        // console.log('props===', props);
         setScanned(true);
         Alert.alert(
             'Bar code Info',
@@ -40,7 +41,12 @@ export default function ScanScreen() {
 
     return (
         <ScanContainer>
-            {!scanned && ( <QrCodeScannerView onBarCodeScanned={scanned ? undefined : HandleBarCodeScanned}/>)}
+            {!scanned && ( 
+                <QrCodeScannerView 
+                    onBarCodeScanned={scanned ? undefined : HandleBarCodeScanned}
+                />
+            )
+            }
         </ScanContainer>
     );
 }

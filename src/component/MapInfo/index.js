@@ -29,7 +29,7 @@ export default function MapInfo({getResult, modalVisible, setModalVisible, setSc
         <MapInfoContainer>
             {!!getResult && modalVisible && (
                 <Modal
-                    animationType="slide"
+                    animationType="fade"
                     transparent={true}
                     visible={modalVisible}
                 >

@@ -17,7 +17,7 @@ export const MobileInput = styled(TextInput)(
     ({showborder})=>({
         height: 40,
         marginBottom: 20,
-        borderWidth: 2,
+        borderWidth: 1,
         padding: 10,
         backgroundColor: 'white',
         borderColor: showborder,
@@ -36,14 +36,13 @@ export const ButtonContainer = styled(View)(
         alignItems: isIcon ? 'center' : '',
     }),
 );
-export const BigLabel = styled(Text)({
-    fontSize: 20,
-    textAlign: 'center',
-    color: '#A9A9A9',
-    marginTop: 20,
-    textTransform: 'uppercase',
-    fontWeight: '700',
-});
+export const BigLabel = styled(Text)(
+    ({isCenter})=>({
+        fontSize: 14,
+        textAlign: isCenter ? 'center' : 'right',
+        fontWeight: '700',
+    }),
+);
 
 export const GoogleText = styled(Text)({
     color: 'white',
@@ -51,20 +50,33 @@ export const GoogleText = styled(Text)({
 });
 
 export const AppName =  styled(Text)({
-    fontSize: 50,
+    fontSize: 20,
     fontWeight: '500',
-    marginBottom: 50,
+    marginBottom: 0,
     alignContent: 'center',
     textAlign: 'center',
 });
 
 export const ImageContainer =  styled(View)({
-    display: 'flex', 
     alignItems: 'center', 
-    marginBottom: 80,
+    justifyContent: 'center',
+    flex: 1,
 });
 
 export const AppImage =  styled(Image)({
-    width: 150,
-    height: 150,
+    width: '80%',
+    height: '40%',
+});
+
+export const DontHaveAccountLable = styled(Text)({
+    fontSize: 14,
+    fontWeight: '500',
+    marginTop: 10,
+    marginBottom: 5,
+    textTransform: 'uppercase',
+    textAlign: 'center',
+});
+
+export const ClickLable = styled(Text)({
+    color: '#0c55c3',
 });

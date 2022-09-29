@@ -3,6 +3,7 @@ import { View } from 'react-native';
 
 export const MapConatiner = styled(View)({
     flex: 1,
+    position: 'relative',
 });
 
 export const MapConatinerInfo = styled(View)({

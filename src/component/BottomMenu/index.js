@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
@@ -8,10 +8,18 @@ import PropTypes from 'prop-types';
 import ProfileData from '../ProfileData';
 import OrderData from '../OrderData';
 import Favorite from '../Favorite';
+import { Button } from 'react-native-paper';
 
 function Feed() {
     return (
+
         <View style={{ flex: 1 }}>
+            {/* <MaterialCommunityIcons
+                name="arrow-left-thick"
+                size={30}
+                style={{ color: 'black', position: 'relative' }}
+                // onPress={() => props.navigation.goBack()}
+            />    */}
             <Map />
         </View>
     );
@@ -19,7 +27,7 @@ function Feed() {
 
 const Tab = createMaterialBottomTabNavigator();
 export default function BottomMenu({ navigation }) {
-
+    const [state, setState] = useState(false);
     return (
         <Tab.Navigator
             initialRouteName="Charge"
@@ -28,6 +36,15 @@ export default function BottomMenu({ navigation }) {
             labelStyle={{ fontSize: 14 }}
             barStyle={{ backgroundColor: 'white' }}
             backBehavior="history"
+            screenListeners={{
+                tabPress: (event)=> {
+                    console.log('event.target==', event.target);
+                    if(event.target.includes('Profile')) {
+                        console.log('hi');
+                        setState(true);
+                    }
+                }
+            }}
         >
             <Tab.Screen
                 name="Home"
@@ -87,7 +104,7 @@ export default function BottomMenu({ navigation }) {
             >
                 {() => <Favorite/>}
             </Tab.Screen>
-            <Tab.Screen
+            {/* <Tab.Screen
                 name="Profile"
                 options={{
                     tabBarLabel: 'Profile',
@@ -100,8 +117,8 @@ export default function BottomMenu({ navigation }) {
                     ),
                 }}
             >
-                {() => <ProfileData navigation={navigation} />}
-            </Tab.Screen>
+                {() => <ProfileData navigation={navigation} state={state}/>}
+            </Tab.Screen> */}
         </Tab.Navigator>
     );
 }

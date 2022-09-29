@@ -7,7 +7,7 @@ export const Lable = styled(Text)({
 });
 
 export const ButtonContainer = styled(View)({
-    marginTop: 30,
+    marginBottom: 20,
 });
 
 export const SignupLabel = styled(Text)({
@@ -19,12 +19,14 @@ export const SignupLabel = styled(Text)({
     fontWeight: '700',
 });
 
-export const SignUpInput =  styled(TextInput)({
-    height: 40,
-    marginBottom: 20,
-    borderWidth: 1,
-    padding: 10,
-    backgroundColor: 'white',
-    borderColor: '#A9A9A9',
-    borderRadius: 4,
-});
+export const SignUpInput =  styled(TextInput)(
+    ({ showborder })=>({
+        height: 40,
+        marginBottom: 20,
+        borderWidth: 1,
+        padding: 10,
+        backgroundColor: 'white',
+        borderColor: showborder,
+        borderRadius: 4,
+    }),
+);

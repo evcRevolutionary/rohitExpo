@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { NavigationContainer } from '@react-navigation/native';
@@ -8,9 +8,9 @@ import NewLogin from '../Login';
 import BottomMenu from '../BottomMenu';
 import TabMenu from '../TabMenu';
 import SignUp from '../SignUp';
+import ForgotPassword from '../ForgotPassword';
 import { 
-    RegisterContainer, 
-    Label, 
+    SignUpLable,
     TabConatiner, 
     TabHeader, 
     TabLabel, 
@@ -25,13 +25,16 @@ export default function Routing() {
                 <Maine.Screen name="Login">
                     {(props) => <NewLogin navigation={props.navigation} />}
                 </Maine.Screen>
+                <Maine.Screen name="ForgotPassword">
+                    {(props) => <ForgotPassword navigation={props.navigation} />}
+                </Maine.Screen>
                 <Maine.Screen name="Resgister">
                     {(props) => (
-                        <RegisterContainer>
+                        <>
                             <StatusBar style={{ background: 'black' }} />
-                            <Label>Sign Up</Label>
+                            <SignUpLable>Sign Up</SignUpLable>
                             <SignUp navigation={props.navigation} />
-                        </RegisterContainer>
+                        </>
                     )}
                 </Maine.Screen>
                 <Maine.Screen name="Profile">
@@ -53,7 +56,10 @@ export default function Routing() {
                     )}
                 </Maine.Screen>
                 <Maine.Screen name="Menu">
-                    {(props) => <BottomMenu navigation={props.navigation} />}
+                    {(props) => {
+                        return (
+                            <BottomMenu navigation={props.navigation} />
+                        );}}
                 </Maine.Screen>
             </Maine.Navigator>
         </NavigationContainer>
