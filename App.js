@@ -1,7 +1,9 @@
 import React from 'react';
 import Routing from './src/component/Routing';
-// import StripApp from './server/src/StripApp';
+import { Provider } from 'react-redux';
+import { stores } from './src/centralStore/store'
 
-const App = () => <Routing/>;
+const App = () =>  <Provider store={stores}><Routing /></Provider>;
 
 export default App;
+

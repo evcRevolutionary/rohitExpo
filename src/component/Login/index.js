@@ -1,43 +1,41 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Animated,
-    StatusBar,
-} from 'react-native';
+import { Animated, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
 import { Container } from './style';
 import InitalScreen from './InitalScreen';
 import LoginPage from './LoginPage';
+import { useSelector } from 'react-redux';
 
 export default function Login({ navigation }) {
-    const [ HideInitalScreen, setHideInitialScreen] = useState(false);
-    const fadeAnim = useRef(new Animated.Value(HideInitalScreen ? 0 : 1)).current ;
+	const [HideInitalScreen, setHideInitialScreen] = useState(false);
+	const fadeAnim = useRef(new Animated.Value(HideInitalScreen ? 0 : 1)).current;
+	const result = useSelector(state=> state);
 
-    useEffect(() => {
-        Animated.timing(
-            fadeAnim,
-            {
-                toValue: HideInitalScreen ? 1 : 0,
-                duration: 2000,
-                useNativeDriver: true,
-            }
-        ).start();
+	useEffect(() => {
+		Animated.timing(fadeAnim, {
+			toValue: HideInitalScreen ? 1 : 0,
+			duration: 2000,
+			useNativeDriver: true,
+		}).start();
 
-        setTimeout(()=>{
-            setHideInitialScreen(true);
-        }, 2100); 
-        
-    }, [fadeAnim, HideInitalScreen, navigation]);
+		setTimeout(() => {
+			setHideInitialScreen(true);
+		}, 2100);
+	}, [fadeAnim, HideInitalScreen, navigation]);
 
-    return (
-        <Container>
-            <StatusBar style={{ background: 'black' }} />
-            {!HideInitalScreen ?
-                <InitalScreen fadeAnim={fadeAnim} />: 
-                <LoginPage {...{fadeAnim, navigation}}/>
-            }
-        </Container>
-    );
+	return (
+		<Container>
+			<StatusBar style={{ background: 'black' }} />
+			{!HideInitalScreen ? (
+				<InitalScreen fadeAnim={fadeAnim} />
+			) : ((result && result.data) ?
+				navigation.navigate('Menu'):
+				<LoginPage {...{ fadeAnim, navigation }} />
+			)}
+		</Container>
+	);
 }
 
 Login.propTypes = {
-    navigation: PropTypes.any,
+	navigation: PropTypes.any,
 };

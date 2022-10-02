@@ -1,28 +1,27 @@
 import styled from 'styled-components/native';
-import { Text, View} from 'react-native'; 
-
+import { Text, View } from 'react-native';
 
 export const SignUpLable = styled(Text)({
-    fontSize: 24,
-    color: 'white',
-    paddingVertical: 20,
-    textAlign: 'center',
-    fontWeight: '700',
-    backgroundColor: '#006400',
+	fontSize: 24,
+	color: 'white',
+	paddingVertical: 20,
+	textAlign: 'center',
+	fontWeight: '700',
+	backgroundColor: '#006400',
 });
 
 export const TabConatiner = styled(View)({
-    flex: 1, 
-    justifyContent: 'center',
+	flex: 1,
+	justifyContent: 'center',
 });
 
 export const TabHeader = styled(View)({
-    display: 'flex', 
-    flexDirection: 'row',
-    marginVertical: 10,
+	display: 'flex',
+	flexDirection: 'row',
+	marginVertical: 10,
 });
 
 export const TabLabel = styled(Text)({
-    fontSize: 20, 
-    color: 'black', 
+	fontSize: 20,
+	color: 'black',
 });

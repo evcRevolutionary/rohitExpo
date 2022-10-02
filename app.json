@@ -6,12 +6,6 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "build": {
-      "development": {
-        "developmentClient": true,
-        "distribution": "internal"
-      }
-    },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -38,8 +32,8 @@
     },
     "packagerOpts": {
       "sourceExts": [
-        "ts",
-        "tsx"
+        "js",
+        "jsx"
       ],
       "transformer": "node_modules/react-native-typescript-transformer/index.js"
     }
