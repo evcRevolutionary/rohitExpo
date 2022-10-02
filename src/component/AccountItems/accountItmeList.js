@@ -3,8 +3,11 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import PropTypes from 'prop-types';
 import { AccountContainer, AccountIconContainer, Lable } from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch } from 'react-redux';
+import { action } from '../../centralStore/action'
 
 export default function AccountItemList({ title, icon, navigation }) {
+	const dispatch = useDispatch();
 	return (
 		<AccountContainer>
 			<AccountIconContainer>
@@ -21,8 +24,14 @@ export default function AccountItemList({ title, icon, navigation }) {
 				style={{ color: 'gray' }}
 				onPress={async() => {
 					if (title === 'logout') {
-						await AsyncStorage.removeItem('login');
-						navigation.navigate('Login', { screen: 'Login', params: {} });
+						AsyncStorage.removeItem('login');
+						const result = await AsyncStorage.getItem('login');
+						if(result=== null){
+							dispatch(action(result))
+							setTimeout(()=>{
+								navigation.navigate('Login')
+							}, 1000)
+						}
 					} else {
 						navigation.navigate('Profile', {
 							screen: 'Profile',

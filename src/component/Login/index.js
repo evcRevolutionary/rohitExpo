@@ -4,12 +4,10 @@ import PropTypes from 'prop-types';
 import { Container } from './style';
 import InitalScreen from './InitalScreen';
 import LoginPage from './LoginPage';
-import { useSelector } from 'react-redux';
 
 export default function Login({ navigation }) {
 	const [HideInitalScreen, setHideInitialScreen] = useState(false);
 	const fadeAnim = useRef(new Animated.Value(HideInitalScreen ? 0 : 1)).current;
-	const result = useSelector(state=> state);
 
 	useEffect(() => {
 		Animated.timing(fadeAnim, {
@@ -28,8 +26,7 @@ export default function Login({ navigation }) {
 			<StatusBar style={{ background: 'black' }} />
 			{!HideInitalScreen ? (
 				<InitalScreen fadeAnim={fadeAnim} />
-			) : ((result && result.data) ?
-				navigation.navigate('Menu'):
+			) : (
 				<LoginPage {...{ fadeAnim, navigation }} />
 			)}
 		</Container>
