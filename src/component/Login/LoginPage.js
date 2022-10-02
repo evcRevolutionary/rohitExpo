@@ -31,10 +31,14 @@ export default function LoginPage({ fadeAnim, navigation }) {
 		}).then(async(res)=> {
 			if(res.accessToken){
 				AsyncStorage.setItem('login', res.accessToken)
+				const result = await AsyncStorage.getItem('login');
+				dispatch(action(result))
 				ToastAndroid.show('Login Successfully', ToastAndroid.SHORT);
 			}
-			const result = await AsyncStorage.getItem('login');
-			dispatch(action(result))
+			else {
+				ToastAndroid.show('Check Credentials', ToastAndroid.SHORT)
+			}
+			
 		})
 	};
 

@@ -19,7 +19,6 @@ export default function Routing() {
 	const [state, setState] = useState(false);
 	const result = useSelector((state) => state);
 	useEffect(() => {
-		console.log('result==', result)
 		if(result && result.data) {
 			setState(true)
 		} 
